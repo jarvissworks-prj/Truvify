@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body { margin: 0; padding: 0; overflow-x: hidden; }
+  body {
+    @apply bg-surface text-on-surface font-sans antialiased;
+  }
+  ::selection { background: #0a0a0a; color: #fff; }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-primary text-white font-medium transition-all duration-200 shadow-sm hover:bg-neutral-800 disabled:bg-neutral-200 disabled:text-neutral-400 disabled:shadow-none disabled:cursor-not-allowed;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-white text-primary border border-hairline font-medium transition-all duration-200 hover:bg-neutral-50 hover:border-black/30 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-full text-neutral-600 font-medium transition-colors hover:text-black hover:bg-neutral-100;
+  }
+  .card {
+    @apply bg-white rounded-2xl border border-hairline;
+  }
+  .input {
+    @apply w-full h-11 px-3.5 rounded-xl bg-white border border-hairline text-[14px] text-primary placeholder:text-neutral-400 outline-none transition-all focus:border-black/40 focus:ring-4 focus:ring-black/[0.04];
+  }
+  .label {
+    @apply block text-[12px] font-medium text-neutral-700 mb-1.5;
+  }
+  .eyebrow {
+    @apply font-mono text-[10px] uppercase tracking-[0.16em] text-neutral-500;
+  }
+  .dot-grid {
+    background-image: radial-gradient(#c8c8c8 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal { opacity: 0; animation: fade-up 0.65s cubic-bezier(0.16,1,0.3,1) forwards; }
+.reveal-1 { animation-delay: .08s; }
+.reveal-2 { animation-delay: .16s; }
+.reveal-3 { animation-delay: .24s; }
+
+.parallax-tile { transition: transform .25s cubic-bezier(0.16,1,0.3,1); will-change: transform; }
+.tile-card { transition: transform .35s cubic-bezier(0.16,1,0.3,1), box-shadow .35s ease; }
+.tile-card:hover { transform: scale(1.07) !important; box-shadow: 0 18px 38px rgba(0,0,0,.09); }
+
+/* thin scrollbars for feeds */
+.thin-scroll::-webkit-scrollbar { width: 6px; }
+.thin-scroll::-webkit-scrollbar-thumb { background: #e5e5e5; border-radius: 9999px; }
+
+/* Keyboard users can always see where they are. */
+:focus-visible { outline: 2px solid #0a0a0a; outline-offset: 2px; }
+.input:focus-visible { outline: none; }
+
+/* Skip link: hidden until a keyboard user tabs to it. */
+.skip-link { position: absolute; left: 12px; top: -48px; z-index: 100; padding: 8px 14px; border-radius: 9999px; background: #0a0a0a; color: #fff; font-size: 13px; font-weight: 500; transition: top .15s ease; }
+.skip-link:focus { top: 12px; }
+
+/* Respect the operating-system "reduce motion" setting. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  .reveal { opacity: 1; animation: none; }
+}
+
+@media print {
+  .no-print { display: none !important; }
+  /* Cards that haven't scrolled into view yet must still print. */
+  .scroll-reveal { opacity: 1 !important; transform: none !important; }
+}

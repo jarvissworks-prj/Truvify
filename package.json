@@ -1,0 +1,40 @@
+{
+  "name": "truvify-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc -b --noEmit",
+    "postinstall": "node -e \"try { require('fs').writeFileSync(require.resolve('rollup/dist/native.js'), 'module.exports = require(\\'@rollup/wasm-node/dist/native.js\\');\\n'); } catch (e) {}\""
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "clsx": "^2.1.1",
+    "docx": "^9.16.0",
+    "framer-motion": "^14.14.0",
+    "jspdf": "^4.2.1",
+    "jszip": "^3.10.2",
+    "lucide-react": "^1.76.0",
+    "pdfjs-dist": "^4.10.38",
+    "pptxgenjs": "^4.0.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.0",
+    "tailwind-merge": "^2.6.2",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@rollup/wasm-node": "^4.68.7",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.41",
+    "tailwindcss": "^3.4.10",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.2"
+  }
+}

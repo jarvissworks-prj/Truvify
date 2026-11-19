@@ -1,0 +1,7 @@
+project_id = "zofxajcllnltzbrpdrfe"
+
+[functions.report-chat]
+verify_jwt = false
+
+[functions.delete-account]
+verify_jwt = false
